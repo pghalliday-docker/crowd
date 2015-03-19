@@ -48,6 +48,8 @@ RUN wget -q ${CROWD_URL} \
 
 COPY docker-entrypoint.sh /
 COPY crowd-server.xml /
+COPY crowdid-postgres-openidserver.xml /
+COPY crowdid-postgres-jdbc.properties /
 VOLUME ${CROWD_HOME}
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
