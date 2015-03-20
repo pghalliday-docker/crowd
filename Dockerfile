@@ -16,6 +16,7 @@ RUN apt-get update \
     && apt-get install -y \
     wget \
     openjdk-7-jre
+ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 RUN mkdir -p ${ATLASSIAN_HOME} \
     && groupadd -r ${CROWD_GROUP} \

@@ -33,4 +33,8 @@ CROWDID_POSTGRES_PORT - Postgres port
 CROWDID_POSTGRES_USER - Postgres user
 CROWDID_POSTGRES_PASSWORD - Postgres password
 CROWDID_POSTGRES_DATABASE - database name
+
+# Add an SMTP SSL certificate if needed
+CROWD_SMTP_SSL_CERT - container's path to the certificate (should be mounted as a volume)
+CROWD_SMTP_SSL_HOST - host name associated with the certificate
 ```

@@ -27,5 +27,10 @@ then
   cp /crowdid-postgres-jdbc.properties ${CROWDID_JDBC_PROPERTIES}
 fi
 
+if [ "$CROWD_SMTP_SSL_CERT" != "" -a "$CROWD_SMTP_SSL_HOST" != "" ]
+then
+  echo yes | keytool -import -alias ${CROWD_SMTP_SSL_HOST} -keystore ${JAVA_HOME}/jre/lib/security/cacerts -file ${CROWD_SMTP_SSL_CERT} -storepass changeit
+fi
+
 chown -R ${CROWD_USER}:${CROWD_GROUP} ${CROWD_HOME}
 su ${CROWD_USER} -c "$@"
