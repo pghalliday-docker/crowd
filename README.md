@@ -37,4 +37,7 @@ CROWDID_POSTGRES_DATABASE - database name
 # Add an SMTP SSL certificate if needed (eg. for smtp.gmail.com)
 CROWD_SMTP_SSL_CERT - container's path to the certificate (should be mounted as a volume)
 CROWD_SMTP_SSL_HOST - host name associated with the certificate
+
+# Override the default crowd.xml configuration (eg. to add JNDI resources)
+CROWD_XML = container's path to the 'crowd.xml' configuration (should be mounted as a volume)
 ```

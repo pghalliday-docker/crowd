@@ -3,6 +3,7 @@
 set -e
 
 SERVER_XML=${CROWD_INSTALL_DIR}/current/apache-tomcat/conf/server.xml
+TARGET_CROWD_XML=${CROWD_INSTALL_DIR}/current/apache-tomcat/conf/Catalina/localhost/crowd.xml
 CROWDID_JDBC_PROPERTIES=${CROWD_INSTALL_DIR}/current/crowd-openidserver-webapp/WEB-INF/classes/jdbc.properties
 CROWDID_OPENIDSERVER_XML=${CROWD_INSTALL_DIR}/current/apache-tomcat/conf/Catalina/localhost/openidserver.xml
 
@@ -27,9 +28,14 @@ then
   cp /crowdid-postgres-jdbc.properties ${CROWDID_JDBC_PROPERTIES}
 fi
 
-if [ "$CROWD_SMTP_SSL_CERT" != "" -a "$CROWD_SMTP_SSL_HOST" != "" ]
+if [ "${CROWD_SMTP_SSL_CERT}" != "" -a "${CROWD_SMTP_SSL_HOST}" != "" ]
 then
   echo yes | keytool -import -alias ${CROWD_SMTP_SSL_HOST} -keystore ${JAVA_HOME}/jre/lib/security/cacerts -file ${CROWD_SMTP_SSL_CERT} -storepass changeit
+fi
+
+if [ "${CROWD_XML}" != "" ]
+then
+  cp ${CROWD_XML} ${TARGET_CROWD_XML}
 fi
 
 chown -R ${CROWD_USER}:${CROWD_GROUP} ${CROWD_HOME}
